@@ -1,5 +1,6 @@
 global using Dotnet_RPG.Models;
 using Dotnet_RPG.Data;
+using Dotnet_RPG.Services.AuthService;
 using Dotnet_RPG.Services.CharacterService;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
