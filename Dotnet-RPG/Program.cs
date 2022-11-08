@@ -2,6 +2,7 @@ global using Dotnet_RPG.Models;
 using Dotnet_RPG.Data;
 using Dotnet_RPG.Services.AuthService;
 using Dotnet_RPG.Services.CharacterService;
+using Dotnet_RPG.Services.WeaponService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -40,6 +41,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = false,
             ValidateAudience = false
         });
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
 
 var app = builder.Build();
 
