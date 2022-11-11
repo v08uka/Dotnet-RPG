@@ -40,7 +40,7 @@ public class AuthService : IAuthService
     public async Task<ServiceResponse<string>> Login(string username, string password)
     {
         var response = new ServiceResponse<string>();
-        var user = await _context.Users.FirstOrDefaultAsync(u => string.Equals(u.Username, username, StringComparison.CurrentCultureIgnoreCase));
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
         if (user == null)
         {
             response.Success = false;
